@@ -41,7 +41,14 @@ const BottomNavButton: React.FC<Props> = ({
   const createIconStyles = () => {
     let iconStyles = {...styles.icon};
     if (location.pathname === linkTo) {
-      iconStyles = {...styles.icon, ...styles.iconActive};
+      switch (linkTo) {
+        case '/wishlist':
+          return {...styles.icon, ...styles.iconActiveWishlist};
+        case '/collection':
+          return {...styles.icon, ...styles.iconActiveCollection};
+        case '/add':
+          return {...styles.icon, ...styles.iconActiveAdd};
+      }
     }
     return iconStyles;
   };
@@ -77,8 +84,14 @@ const styles = StyleSheet.create({
     height: 28,
     tintColor: 'black',
   },
-  iconActive: {
+  iconActiveCollection: {
     tintColor: '#476dd6',
+  },
+  iconActiveWishlist: {
+    tintColor: '#5151c3',
+  },
+  iconActiveAdd: {
+    tintColor: '#19b9b9',
   },
   iconTitle: {
     fontSize: 9,
