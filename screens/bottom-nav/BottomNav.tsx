@@ -1,8 +1,16 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
+import BottomNavButton from './BottomNavButton';
 
-const BottomNav = () => {
-  return <View style={styles.bottomNavView}></View>;
+const BottomNav: React.FC = () => {
+  return (
+    <View style={styles.bottomNavView}>
+      <BottomNavButton iconFileName="plus" iconTitle="Add" />
+      <BottomNavButton iconFileName="heart" iconTitle="Wishlist" />
+      <BottomNavButton iconFileName="collection" iconTitle="Collection" />
+      <BottomNavButton iconFileName="menu" iconTitle="Menu" />
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -11,6 +19,11 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#f5f5f5',
     display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    paddingLeft: '4%',
+    paddingRight: '4%',
   },
 });
 

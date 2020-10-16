@@ -12,7 +12,7 @@ import {NativeRouter, Route} from 'react-router-native';
 import BottomNav from './screens/bottom-nav/BottomNav';
 import Home from './screens/Home';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <>
       <StatusBar backgroundColor="#80afdd" />
