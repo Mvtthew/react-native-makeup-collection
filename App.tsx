@@ -1,31 +1,31 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   SafeAreaView,
-  Text,
   StatusBar,
   ScrollView,
   StyleSheet,
   View,
-  Appearance,
 } from 'react-native';
 import {NativeRouter, Route} from 'react-router-native';
 import BottomNav from './components/bottom-nav/BottomNav';
+import Collection from './screens/Collection';
 import Home from './screens/Home';
 
 const App: React.FC = () => {
   return (
     <>
-      <StatusBar backgroundColor="#80afdd" />
-      <View style={styles.root}>
-        <SafeAreaView style={styles.main}>
-          <ScrollView>
-            <NativeRouter>
+      <NativeRouter>
+        <StatusBar backgroundColor="#80afdd" />
+        <View style={styles.root}>
+          <SafeAreaView style={styles.main}>
+            <ScrollView>
               <Route path="/" exact component={Home} />
-            </NativeRouter>
-          </ScrollView>
-          <BottomNav />
-        </SafeAreaView>
-      </View>
+              <Route path="/collection" component={Collection} />
+            </ScrollView>
+            <BottomNav />
+          </SafeAreaView>
+        </View>
+      </NativeRouter>
     </>
   );
 };

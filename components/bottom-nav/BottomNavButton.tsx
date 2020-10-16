@@ -1,12 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Link, useLocation} from 'react-router-native';
 
 interface Props {
   iconFileName: 'plus' | 'heart' | 'collection' | 'menu';
   iconTitle: string;
+  linkTo: string;
 }
 
-const BottomNavButton: React.FC<Props> = ({iconFileName, iconTitle}) => {
+const BottomNavButton: React.FC<Props> = ({
+  iconFileName,
+  iconTitle,
+  linkTo,
+}) => {
+  const location = useLocation();
+
   const getIconSource = () => {
     switch (iconFileName) {
       case 'plus':
@@ -22,17 +30,36 @@ const BottomNavButton: React.FC<Props> = ({iconFileName, iconTitle}) => {
     }
   };
 
+  const createButtonStyles = () => {
+    let buttonStyles = {...styles.button};
+    if (location.pathname === linkTo) {
+      buttonStyles = {...styles.button, ...styles.buttonActive};
+    }
+    return buttonStyles;
+  };
+
+  const createIconStyles = () => {
+    let iconStyles = {...styles.icon};
+    if (location.pathname === linkTo) {
+      iconStyles = {...styles.icon, ...styles.iconActive};
+    }
+    return iconStyles;
+  };
+
   return (
-    <Pressable>
-      <View style={styles.button}>
-        <Image source={getIconSource()} style={styles.icon} />
+    <Link to={linkTo} underlayColor="#e3e3e3" style={styles.link}>
+      <View style={createButtonStyles()}>
+        <Image source={getIconSource()} style={createIconStyles()} />
         <Text style={styles.iconTitle}>{iconTitle}</Text>
       </View>
-    </Pressable>
+    </Link>
   );
 };
 
 const styles = StyleSheet.create({
+  link: {
+    borderRadius: 15,
+  },
   button: {
     width: 60,
     height: 60,
@@ -41,12 +68,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  buttonActive: {
+    backgroundColor: '#e3e3e3',
+    borderRadius: 15,
+  },
   icon: {
-    width: 32,
-    height: 32,
+    width: 28,
+    height: 28,
+    tintColor: 'black',
+  },
+  iconActive: {
+    tintColor: '#476dd6',
   },
   iconTitle: {
-    fontSize: 10,
+    fontSize: 9,
   },
 });
 
