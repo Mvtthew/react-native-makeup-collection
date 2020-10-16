@@ -5,8 +5,12 @@ import BottomNavButton from './BottomNavButton';
 const BottomNav: React.FC = () => {
   return (
     <View style={styles.bottomNavView}>
-      <BottomNavButton iconFileName="plus" iconTitle="Add" linkTo="/" />
-      <BottomNavButton iconFileName="heart" iconTitle="Wishlist" linkTo="/" />
+      <BottomNavButton iconFileName="plus" iconTitle="Add" linkTo="/add" />
+      <BottomNavButton
+        iconFileName="heart"
+        iconTitle="Wishlist"
+        linkTo="/wishlist"
+      />
       <BottomNavButton
         iconFileName="collection"
         iconTitle="Collection"

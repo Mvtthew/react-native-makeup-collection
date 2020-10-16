@@ -8,8 +8,10 @@ import {
 } from 'react-native';
 import {NativeRouter, Route} from 'react-router-native';
 import BottomNav from './components/bottom-nav/BottomNav';
+import Add from './screens/Add';
 import Collection from './screens/Collection';
 import Home from './screens/Home';
+import Wishlist from './screens/Wishlist';
 
 const App: React.FC = () => {
   return (
@@ -21,6 +23,8 @@ const App: React.FC = () => {
             <ScrollView>
               <Route path="/" exact component={Home} />
               <Route path="/collection" component={Collection} />
+              <Route path="/add" component={Add} />
+              <Route path="/wishlist" component={Wishlist} />
             </ScrollView>
             <BottomNav />
           </SafeAreaView>
