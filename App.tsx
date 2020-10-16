@@ -9,7 +9,7 @@ import {
   Appearance,
 } from 'react-native';
 import {NativeRouter, Route} from 'react-router-native';
-import BottomNav from './screens/bottom-nav/BottomNav';
+import BottomNav from './components/bottom-nav/BottomNav';
 import Home from './screens/Home';
 
 const App: React.FC = () => {
